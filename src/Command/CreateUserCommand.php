@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateUserCommand extends Command
+final class CreateUserCommand extends Command
 {
     /**
      * @var \Prooph\ServiceBus\CommandBus $commandBus
