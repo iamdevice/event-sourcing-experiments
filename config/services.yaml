@@ -47,3 +47,10 @@ services:
             - '@user_collection'
         tags:
             - { name: prooph_service_bus.default_command_bus.route_target, message_detection: true }
+
+    App\EventSourcing\Model\User\Handler\ChangeUserNameHandler:
+        public: true
+        arguments:
+            - '@user_collection'
+        tags:
+            - { name: prooph_service_bus.default_command_bus.route_target, message_detection: true }

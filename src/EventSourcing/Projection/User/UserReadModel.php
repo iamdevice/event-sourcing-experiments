@@ -8,7 +8,8 @@ declare(strict_types=1);
 
 namespace App\EventSourcing\Projection\User;
 
-use App\EventSourcing\Infrastructure\Entity\User;
+use App\EventSourcing\Model\User\Event\UserWasChangedName;
+use App\EventSourcing\Model\User\Event\UserWasCreated;
 use App\EventSourcing\Projection\Table;
 use Doctrine\DBAL\FetchMode;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,17 +24,14 @@ final class UserReadModel extends AbstractReadModel
      */
     private $connection;
 
-    /**
-     * @var \Doctrine\ORM\EntityManagerInterface $entityManager
-     */
-    private $entityManager;
-
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->entityManager = $entityManager;
         $this->connection = $entityManager->getConnection();
     }
 
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function init(): void
     {
         $sql = <<<EOT
@@ -47,6 +45,10 @@ EOT;
         $this->connection->prepare($sql)->execute();
     }
 
+    /**
+     * @return bool
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function isInitialized(): bool
     {
         $sql = <<<EOT
@@ -64,6 +66,9 @@ EOT;
         return $result->exists ?? false;
     }
 
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function reset(): void
     {
         $sql = <<<EOT
@@ -73,6 +78,9 @@ EOT;
         $this->connection->prepare($sql)->execute();
     }
 
+    /**
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function delete(): void
     {
         $sql = <<<EOT
@@ -82,14 +90,34 @@ EOT;
         $this->connection->prepare($sql)->execute();
     }
 
-    protected function insert(array $data): void
+    /**
+     * @param \App\EventSourcing\Model\User\Event\UserWasCreated $event
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    protected function insert(UserWasCreated $event): void
     {
-        /** @var \App\EventSourcing\Model\User\Event\UserWasCreated $event */
-        $event = $data['event'];
-
         $this->connection->insert(Table::USER, [
             'id' => $event->userId()->toString(),
             'name' => $event->userName()->toString()
         ]);
+    }
+
+    /**
+     * @param \App\EventSourcing\Model\User\Event\UserWasChangedName $event
+     *
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    protected function updateName(UserWasChangedName $event): void
+    {
+        $this->connection->update(
+            Table::USER,
+            [
+                'name' => $event->newName()->toString(),
+            ],
+            [
+                'id' => $event->userId()->toString()
+            ]
+        );
     }
 }

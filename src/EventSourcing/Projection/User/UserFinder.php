@@ -6,6 +6,7 @@
 
 namespace App\EventSourcing\Projection\User;
 
+use App\EventSourcing\Infrastructure\Entity\User;
 use Doctrine\Common\Persistence\ObjectRepository;
 
 class UserFinder
@@ -25,7 +26,7 @@ class UserFinder
         return $this->userRepository->findAll();
     }
 
-    public function findById(string $userId)
+    public function findById(string $userId): ?User
     {
         return $this->userRepository->find($userId);
     }

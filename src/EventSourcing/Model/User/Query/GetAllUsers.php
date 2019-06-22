@@ -8,8 +8,6 @@ declare(strict_types=1);
 
 namespace App\EventSourcing\Model\User\Query;
 
-use Prooph\Common\Messaging\Query;
-
 final class GetAllUsers
 {
 

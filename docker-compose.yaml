@@ -24,6 +24,13 @@ services:
       - *ssh-sec
       - *ssh-pub
       - ./:/home/apps/event_sourcing
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
 volumes:
   pgsql-data:
     driver: local

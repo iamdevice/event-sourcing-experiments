@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71106ad151d714e84958684dcebf7c49",
+    "content-hash": "35efab927fc4cbcce2bedffe54ba77e5",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1261,6 +1261,112 @@
             "time": "2018-06-14T14:45:07+00:00"
         },
         {
+            "name": "enqueue/amqp-lib",
+            "version": "0.9.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-enqueue/amqp-lib.git",
+                "reference": "3109fdacb9ffee139605431d50e4c590ee6f9a6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-enqueue/amqp-lib/zipball/3109fdacb9ffee139605431d50e4c590ee6f9a6d",
+                "reference": "3109fdacb9ffee139605431d50e4c590ee6f9a6d",
+                "shasum": ""
+            },
+            "require": {
+                "enqueue/amqp-tools": "^0.9",
+                "php": "^7.1.3",
+                "php-amqplib/php-amqplib": "^2.8",
+                "queue-interop/amqp-interop": "^0.8",
+                "queue-interop/queue-interop": "^0.7|^0.8"
+            },
+            "require-dev": {
+                "enqueue/null": "0.9.x-dev",
+                "enqueue/test": "0.9.x-dev",
+                "phpunit/phpunit": "~5.4.0",
+                "queue-interop/queue-spec": "^0.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Enqueue\\AmqpLib\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Message Queue Amqp Transport",
+            "homepage": "https://enqueue.forma-pro.com/",
+            "keywords": [
+                "AMQP",
+                "messaging",
+                "queue"
+            ],
+            "time": "2019-05-03T15:15:18+00:00"
+        },
+        {
+            "name": "enqueue/amqp-tools",
+            "version": "0.9.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-enqueue/amqp-tools.git",
+                "reference": "47385a5f3357e9091c0171497f1d41bbf2b917d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-enqueue/amqp-tools/zipball/47385a5f3357e9091c0171497f1d41bbf2b917d0",
+                "reference": "47385a5f3357e9091c0171497f1d41bbf2b917d0",
+                "shasum": ""
+            },
+            "require": {
+                "enqueue/dsn": "^0.9.2",
+                "php": "^7.1.3",
+                "queue-interop/amqp-interop": "^0.8",
+                "queue-interop/queue-interop": "^0.7|^0.8"
+            },
+            "require-dev": {
+                "enqueue/null": "0.9.x-dev",
+                "enqueue/test": "0.9.x-dev",
+                "phpunit/phpunit": "~5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Enqueue\\AmqpTools\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Message Queue Amqp Tools",
+            "homepage": "https://enqueue.forma-pro.com/",
+            "keywords": [
+                "AMQP",
+                "messaging",
+                "queue"
+            ],
+            "time": "2019-02-26T10:20:02+00:00"
+        },
+        {
             "name": "enqueue/dsn",
             "version": "0.9.2",
             "source": {
@@ -1570,32 +1676,31 @@
         },
         {
             "name": "marc-mabe/php-enum",
-            "version": "v3.1.1",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marc-mabe/php-enum.git",
-                "reference": "7a5d09411cde452013f865db4fde7a3c61e5e8c9"
+                "reference": "fa98114ea158f5f420856092ce9d97d870b752eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marc-mabe/php-enum/zipball/7a5d09411cde452013f865db4fde7a3c61e5e8c9",
-                "reference": "7a5d09411cde452013f865db4fde7a3c61e5e8c9",
+                "url": "https://api.github.com/repos/marc-mabe/php-enum/zipball/fa98114ea158f5f420856092ce9d97d870b752eb",
+                "reference": "fa98114ea158f5f420856092ce9d97d870b752eb",
                 "shasum": ""
             },
             "require": {
                 "ext-reflection": "*",
-                "php": ">=5.6"
+                "php": ">=7.1"
             },
             "require-dev": {
-                "lstrojny/functional-php": "1.2.* || 1.0.*",
-                "phpbench/phpbench": "@dev",
-                "phpunit/phpunit": "^5.7 || ^6.0"
+                "phpbench/phpbench": "^0.15.0",
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev",
-                    "dev-4.x": "4.0-dev",
+                    "dev-master": "4.0-dev",
+                    "dev-3.x": "3.1-dev",
                     "dev-2.x": "2.3-dev",
                     "dev-1.x": "1.3-dev"
                 }
@@ -1617,7 +1722,7 @@
                     "role": "Lead"
                 }
             ],
-            "description": "Simple and fast implementation of enumerations with native PHP>=5.6",
+            "description": "Simple and fast implementation of enumerations with native PHP",
             "homepage": "https://github.com/marc-mabe/php-enum",
             "keywords": [
                 "enum",
@@ -1633,7 +1738,7 @@
                 "type-hint",
                 "typehint"
             ],
-            "time": "2019-02-02T18:47:58+00:00"
+            "time": "2019-05-21T20:23:38+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1905,81 +2010,6 @@
                 "rabbitmq"
             ],
             "time": "2019-04-24T15:36:21+00:00"
-        },
-        {
-            "name": "prolic/humus-amqp",
-            "version": "v1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/prolic/HumusAmqp.git",
-                "reference": "2a90a259493c244624e9591e7bd144e9d4e70cbe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/prolic/HumusAmqp/zipball/2a90a259493c244624e9591e7bd144e9d4e70cbe",
-                "reference": "2a90a259493c244624e9591e7bd144e9d4e70cbe",
-                "shasum": ""
-            },
-            "require": {
-                "beberlei/assert": "^2.4 || ^3.0",
-                "marc-mabe/php-enum": "^2.2 || ^3.0",
-                "php": "~7.0",
-                "psr/log": "^1.0"
-            },
-            "conflict": {
-                "container-interop/container-interop": "<1.2",
-                "sandrokeil/interop-config": "<1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.8.1",
-                "malukenho/docheader": "^0.1.4",
-                "php-amqplib/php-amqplib": "^2.7.1",
-                "phpspec/prophecy": "^1.7",
-                "phpunit/phpunit": "^6.5.7",
-                "psr/container": "^1.0",
-                "sandrokeil/interop-config": "^1.0",
-                "satooshi/php-coveralls": "^2.0",
-                "symfony/console": "^2.5|^3.0",
-                "zendframework/zend-servicemanager": "^2.7 || ^3.0"
-            },
-            "suggest": {
-                "ext-amqp": ">= 1.9.3 For usage together with php amqp extension",
-                "ext-pcntl": "For process control management",
-                "php-amqplib/php-amqplib": ">= 2.7.1 For usage together with php-amqplib",
-                "psr/container": "For usage of provided factories",
-                "sandrokeil/interop-config": "For usage of provided factories",
-                "symfony/console": "For usage of the provided console tool"
-            },
-            "bin": [
-                "bin/humus-amqp"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Humus\\Amqp\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sascha-Oliver Prolic",
-                    "email": "saschaprolic@googlemail.com"
-                }
-            ],
-            "description": "PHP-AMQP library with RabbitMQ Extensions",
-            "homepage": "https://github.com/prolic/HumusAmqp",
-            "keywords": [
-                "AMQP",
-                "humus",
-                "messaging",
-                "queue",
-                "rabbit",
-                "rabbitmq"
-            ],
-            "time": "2018-11-24T16:02:53+00:00"
         },
         {
             "name": "prooph/common",
@@ -2458,81 +2488,6 @@
             "time": "2019-05-22T09:13:39+00:00"
         },
         {
-            "name": "prooph/humus-amqp-producer",
-            "version": "v2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/prooph/humus-amqp-producer.git",
-                "reference": "aef57b8fd1b8b7e2440191e4777d31e79d2f4206"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/prooph/humus-amqp-producer/zipball/aef57b8fd1b8b7e2440191e4777d31e79d2f4206",
-                "reference": "aef57b8fd1b8b7e2440191e4777d31e79d2f4206",
-                "shasum": ""
-            },
-            "require": {
-                "beberlei/assert": "^2.7.1 || ^3.0",
-                "php": "^7.1",
-                "prolic/humus-amqp": "^1.0",
-                "prooph/common": "^4.1",
-                "prooph/service-bus": "^6.0"
-            },
-            "conflict": {
-                "sandrokeil/interop-config": "<2.0.1"
-            },
-            "require-dev": {
-                "phpspec/prophecy": "^1.7",
-                "phpunit/phpunit": "^6.0",
-                "prooph/bookdown-template": "^0.2.3",
-                "prooph/event-store": "^7.0",
-                "prooph/php-cs-fixer-config": "^0.3",
-                "psr/container": "^1.0",
-                "react/promise": "^2.4.1",
-                "sandrokeil/interop-config": "^2.0.1",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "suggest": {
-                "prooph/event-store": "^7.0 let the EventBus dispatch persisted domain events",
-                "psr/container": "^1.0 for usage of provided factories",
-                "react/promise": "For usage with query producer",
-                "sandrokeil/interop-config": "For usage of provided factories"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Prooph\\ServiceBus\\Message\\HumusAmqp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sascha-Oliver Prolic",
-                    "email": "saschaprolic@googlemail.com"
-                },
-                {
-                    "name": "Alexander Miertsch",
-                    "email": "contact@prooph.de",
-                    "homepage": "http://www.prooph.de"
-                }
-            ],
-            "description": "HumusAmqp Producer for Prooph Service Bus ",
-            "homepage": "http://getprooph.org/",
-            "keywords": [
-                "AMQP",
-                "cqrs",
-                "ddd",
-                "humus",
-                "messaging",
-                "prooph",
-                "rabbitmq"
-            ],
-            "time": "2018-11-03T07:24:07+00:00"
-        },
-        {
             "name": "prooph/pdo-event-store",
             "version": "v1.11.1",
             "source": {
@@ -2671,6 +2626,79 @@
                 "prooph"
             ],
             "time": "2019-04-26T23:36:01+00:00"
+        },
+        {
+            "name": "prooph/psb-enqueue-producer",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prooph/psb-enqueue-producer.git",
+                "reference": "681ed2f68834de8d47febc0dc2152673403747da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prooph/psb-enqueue-producer/zipball/681ed2f68834de8d47febc0dc2152673403747da",
+                "reference": "681ed2f68834de8d47febc0dc2152673403747da",
+                "shasum": ""
+            },
+            "require": {
+                "enqueue/enqueue": "^0.9",
+                "php": "^7.1",
+                "prooph/common": "^4.1",
+                "prooph/service-bus": "^6.0",
+                "queue-interop/queue-interop": "^0.8"
+            },
+            "require-dev": {
+                "enqueue/amqp-tools": "^0.9",
+                "enqueue/fs": "^0.9",
+                "enqueue/null": "^0.9",
+                "enqueue/simple-client": "^0.9.3",
+                "phpspec/prophecy": "^1.7",
+                "phpunit/phpunit": "^6.0",
+                "prooph/php-cs-fixer-config": "^0.3",
+                "psr/container": "^1.0",
+                "react/promise": "^2.4.1",
+                "sandrokeil/interop-config": "^2.0.1",
+                "symfony/filesystem": "^2.1|^3"
+            },
+            "suggest": {
+                "psr/container": "^1.0 for usage of provided factories",
+                "sandrokeil/interop-config": "For usage of provided factories"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Prooph\\ServiceBus\\Message\\Enqueue\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sascha-Oliver Prolic",
+                    "email": "saschaprolic@googlemail.com"
+                },
+                {
+                    "name": "Alexander Miertsch",
+                    "email": "contact@prooph.de",
+                    "homepage": "http://www.prooph.de"
+                },
+                {
+                    "name": "Maksym Kotliar",
+                    "email": "kotlyar.maksim@gmail.com"
+                }
+            ],
+            "description": "Enqueue Message Producer for Prooph Service Bus",
+            "homepage": "http://getprooph.org/",
+            "keywords": [
+                "cqrs",
+                "enqueue",
+                "messaging",
+                "prooph"
+            ],
+            "time": "2019-04-03T10:13:27+00:00"
         },
         {
             "name": "prooph/service-bus",

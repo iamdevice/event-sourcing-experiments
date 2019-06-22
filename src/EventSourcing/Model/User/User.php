@@ -8,9 +8,12 @@ declare(strict_types=1);
 
 namespace App\EventSourcing\Model\User;
 
+use RuntimeException;
+use App\EventSourcing\Model\User\Event\UserWasChangedName;
 use App\EventSourcing\Model\User\Event\UserWasCreated;
 use Prooph\EventSourcing\AggregateChanged;
 use Prooph\EventSourcing\AggregateRoot;
+use function implode, explode, array_slice, method_exists, get_class;
 
 final class User extends AggregateRoot
 {
@@ -44,6 +47,11 @@ final class User extends AggregateRoot
         return $new;
     }
 
+    public function changeName(UserName $name): void
+    {
+        $this->recordThat(UserWasChangedName::withData($this->id, $this->name, $name));
+    }
+
     protected function aggregateId(): string
     {
         return $this->id->toString();
@@ -53,8 +61,8 @@ final class User extends AggregateRoot
     {
         $handler = $this->determineEventHandlerMethodFor($event);
 
-        if (false === \method_exists($this, $handler)) {
-            throw new \RuntimeException('Missing event handler method');
+        if (false === method_exists($this, $handler)) {
+            throw new RuntimeException('Missing event handler method');
         }
 
         $this->{$handler}($event);
@@ -66,8 +74,14 @@ final class User extends AggregateRoot
         $this->name = $event->userName();
     }
 
+    protected function whenUserWasChangedName(UserWasChangedName $event): void
+    {
+        $this->id = $event->userId();
+        $this->name = $event->newName();
+    }
+
     protected function determineEventHandlerMethodFor(AggregateChanged $event): string
     {
-        return 'when' . \implode(\array_slice(\explode('\\', \get_class($event)), -1));
+        return 'when' . implode(array_slice(explode('\\', get_class($event)), -1));
     }
 }
