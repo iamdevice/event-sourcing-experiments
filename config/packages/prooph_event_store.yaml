@@ -1,0 +1,27 @@
+prooph_event_store:
+    stores:
+        default:
+            event_store: 'app.event_store.default'
+            repositories:
+                user_collection:
+                    repository_class: App\EventSourcing\Infrastructure\EventStore\EventStoreUserCollection
+                    aggregate_type: App\EventSourcing\Model\User\User
+                    aggregate_translator: Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator
+    projection_managers:
+        default:
+            event_store: 'app.event_store.default'
+            connection: 'doctrine.pdo.connection'
+            projections:
+                user_projection:
+                    read_model: App\EventSourcing\Projection\User\UserReadModel
+                    projection: App\EventSourcing\Projection\User\UserProjection
+
+services:
+    _defaults:
+        public: false
+
+    doctrine.pdo.connection:
+        class: PDO
+        factory: ['@database_connection', getWrappedConnection]
+
+    Prooph\EventSourcing\EventStoreIntegration\AggregateTranslator: ~

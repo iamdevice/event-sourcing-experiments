@@ -1,0 +1,16 @@
+App\EventSourcing\Infrastructure\Entity\User:
+  type: entity
+  table: users
+
+  id:
+    id:
+      type: uuid
+      generator:
+        strategy: CUSTOM
+      customIdGenerator:
+        class: Ramsey\Uuid\Doctrine\UuidGenerator
+
+  fields:
+    name:
+      type: string
+      column: name

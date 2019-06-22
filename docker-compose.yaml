@@ -1,0 +1,29 @@
+version: '3.7'
+x-volumes:
+  - &ssh-sec ${SSH_PRIVATE_KEY}:/home/apps/.ssh/id_rsa:ro
+  - &ssh-pub ${SSH_PUBLIC_KEY}:/home/apps/.ssh/id_rsa.pub:ro
+services:
+  postgres:
+    image: postgres:9.5
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: event_sourcing
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_password
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+  php:
+    image: device-php:7.1
+    build:
+      context: ./docker/php/
+      args:
+        APP_USER_ID: ${HOST_USER_ID}
+        APP_USERGROUP_ID: ${HOST_USERGROUP_ID}
+    volumes:
+      - *ssh-sec
+      - *ssh-pub
+      - ./:/home/apps/event_sourcing
+volumes:
+  pgsql-data:
+    driver: local

@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+userList:
+  path: /users
+  controller: App\Controller\UserListController::listAction
+  methods: [GET]
