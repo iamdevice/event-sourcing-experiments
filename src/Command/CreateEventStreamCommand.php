@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use ArrayIterator;
 use Prooph\EventStore\EventStore;
 use Prooph\EventStore\Stream;
 use Prooph\EventStore\StreamName;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class CreateEventStreamCommand extends ContainerAwareCommand
+final class CreateEventStreamCommand extends Command
 {
     private $eventStore;
 
@@ -30,7 +31,7 @@ final class CreateEventStreamCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->eventStore->create(new Stream(new StreamName('event_stream'), new \ArrayIterator([])));
+        $this->eventStore->create(new Stream(new StreamName('event_stream'), new ArrayIterator()));
 
         $output->writeln('<info>Event stream was created successfully.</info>');
     }
